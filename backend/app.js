@@ -1,9 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const Post = require('./models/post');
 
 const app = express();
+
+dotenv.config();
+
+const url = process.env.MONGOLAB_URI;
+
+mongoose.connect()
 
 app.use(bodyParser.json())
 
