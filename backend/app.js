@@ -9,9 +9,13 @@ const app = express();
 
 dotenv.config();
 
-const url = process.env.MONGOLAB_URI;
+const url = process.env.MONGODB_URL;
 
-mongoose.connect()
+mongoose.connect(url).then(() => {
+  console.log('connected to database')
+}).catch(() => {
+  console.log('connection failed')
+});
 
 app.use(bodyParser.json())
 
@@ -33,7 +37,7 @@ app.post('/api/posts', (req, res, next) => {
     title: req.body.title,
     content: req.body.content
   });
-  console.log(post);
+  post.save();
   res.status(201).json({
     message: "Post added successfully"
   })
