@@ -46,3 +46,4 @@ app.use('/api/posts', (req, res, next) => {
 });
 
 module.exports = app;
+
